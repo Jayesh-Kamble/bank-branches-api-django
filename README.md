@@ -9,17 +9,26 @@ A comprehensive Django REST API for managing bank and branch information across 
 
 ## 📋 Table of Contents
 
+- [Project Overview](#project-overview)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [API Endpoints](#api-endpoints)
+- [Live Demo Screenshots](#live-demo-screenshots)
 - [Installation & Setup](#installation--setup)
 - [Usage Examples](#usage-examples)
-- [Screenshots](#screenshots)
 - [Database Schema](#database-schema)
 - [Project Structure](#project-structure)
+- [Admin Interface](#admin-interface)
 - [Performance](#performance)
 - [Contributing](#contributing)
 - [Contact](#contact)
+
+## 🎯 Project Overview
+
+This Django REST API project demonstrates a complete backend solution for managing Indian bank branches with advanced filtering, search capabilities, and a professional admin interface. The project showcases modern web development practices with Django REST Framework.
+
+![Project Structure](https://github.com/user-attachments/assets/d5ad7ebf-815b-4175-92f7-45f89eb7fcac)
+*Well-organized Django project structure with modular app design*
 
 ## ✨ Features
 
@@ -81,11 +90,32 @@ A comprehensive Django REST API for managing bank and branch information across 
 - **ordering**: Sort by field (prefix with `-` for descending)
   - Available fields: `branch`, `created_at`, `bank__name`
 
-### Example API Calls
+## 📸 Live Demo Screenshots
 
-#### Get All Banks
+### Banks API Response
+![Banks API](https://github.com/user-attachments/assets/e9fc5d32-e956-4b02-8807-9901921bcc26)
+*Banks List API endpoint showing paginated results with comprehensive bank information including unique codes and timestamps*
 
-**API Call:**
-**Screenshot:**
-![Banks API Response](screenshots/banks-api-response.png)
+### Branches API with Advanced Filtering
+![Branches API](https://github.com/user-attachments/assets/13d6d543-0e91-4489-ba1a-1018f8c47cfd)
+*Branches List API demonstrating rich branch data with bank relationships, IFSC codes, and location details*
 
+### Search Functionality in Action
+![Search Results](https://github.com/user-attachments/assets/21b026fd-c798-4694-86e6-c1f5fb8db7fa)
+*Real-time search functionality showing filtered results based on search queries across multiple fields*
+
+### Bank-Specific Branches Endpoint
+![Bank Branches](https://github.com/user-attachments/assets/31e09f7b-9b69-4958-b914-67d7f7a33f6c)
+*Dedicated endpoint showing all branches for a specific bank with detailed branch information and parent bank data*
+
+## 📦 Installation & Setup
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Git
+- Virtual Environment (recommended)
+
+### Step-by-Step Installation
+
+1. **Clone the Repository**
