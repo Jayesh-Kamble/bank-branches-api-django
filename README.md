@@ -83,3 +83,9 @@ A comprehensive Django REST API for managing bank and branch information across 
 
 ### Example API Calls
 
+#### Get All Banks
+
+**API Call:**
+**Screenshot:**
+![Banks API Response](screenshots/banks-api-response.png)
+
