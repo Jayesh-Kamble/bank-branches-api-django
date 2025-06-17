@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Branches REST API - Professional Django Backend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .badges {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: 0.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .api-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .api-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+        
+        .api-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .api-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .api-card .icon {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .api-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .api-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .api-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .features {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .features h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9ff, #e8edff);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .feature-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .stats {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            padding: 2rem 0;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .tech-stack {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .tech-stack h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .tech-item {
+            background: #f8f9ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 2px solid #e8edff;
+            color: #667eea;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏦 Bank Branches REST API</h1>
+            <p>Comprehensive Django REST API for managing bank and branch information across India with advanced search, filtering, and professional admin interface</p>
+            
+            <div class="badges">
+                <span class="badge">Django 5.2.3</span>
+                <span class="badge">Django REST Framework</span>
+                <span class="badge">Professional Admin</span>
+                <span class="badge">Advanced Filtering</span>
+                <span class="badge">Test Coverage</span>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">API Endpoints</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Banks</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12+</span>
+                    <span class="stat-label">Branches</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">17</span>
+                    <span class="stat-label">Test Cases</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="api-grid">
+            <div class="api-card">
+                <h3><span class="icon">🏛️</span> Banks API</h3>
+                <p>Access comprehensive information about banks including names, unique codes, and timestamps. Search and order results efficiently.</p>
+                <a href="/api/banks/" class="api-link">Explore Banks API</a>
+            </div>
+            
+            <div class="api-card">
+                <h3><span class="icon">🏢</span> Branches API</h3>
+                <p>Retrieve detailed branch information with IFSC codes, complete addresses, and location data. Advanced filtering by city, state, and bank.</p>
+                <a href="/api/branches/" class="api-link">Explore Branches API</a>
+            </div>
+            
+            <div class="api-card">
+                <h3><span class="icon">🔍</span> Advanced Search</h3>
+                <p>Powerful search capabilities across banks and branches with multiple filter options including city, state, and IFSC codes.</p>
+                <a href="/api/branches/?search=Mumbai" class="api-link">Try Search Demo</a>
+            </div>
+            
+            <div class="api-card">
+                <h3><span class="icon">⚙️</span> Admin Interface</h3>
+                <p>Professional Django admin interface for complete data management with search, filtering, and bulk operations.</p>
+                <a href="/admin/" class="api-link">Access Admin Panel</a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>✨ Key Features & Capabilities</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <strong>RESTful API Design</strong>
+                    Clean, intuitive endpoints following REST principles with proper HTTP methods and status codes
+                </div>
+                <div class="feature-item">
+                    <strong>Advanced Filtering</strong>
+                    Search by city, state, bank name, IFSC code with pagination support for efficient data loading
+                </div>
+                <div class="feature-item">
+                    <strong>Database Optimization</strong>
+                    Optimized queries with select_related for better performance and reduced database hits
+                </div>
+                <div class="feature-item">
+                    <strong>Professional Admin</strong>
+                    Full CRUD operations through Django admin with search, filtering, and bulk operations
+                </div>
+                <div class="feature-item">
+                    <strong>Comprehensive Testing</strong>
+                    17 test cases covering models, API endpoints, search functionality, and error handling
+                </div>
+                <div class="feature-item">
+                    <strong>Error Handling</strong>
+                    Proper HTTP status codes and error messages with comprehensive validation
+                </div>
+            </div>
+        </div>
+        
+        <div class="tech-stack">
+            <h3>🛠️ Technology Stack</h3>
+            <div class="tech-items">
+                <span class="tech-item">Django 5.2.3</span>
+                <span class="tech-item">Django REST Framework</span>
+                <span class="tech-item">SQLite / PostgreSQL</span>
+                <span class="tech-item">Python 3.8+</span>
+                <span class="tech-item">Django CORS Headers</span>
+                <span class="tech-item">Django Filters</span>
+                <span class="tech-item">Professional Testing</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Built with ❤️ using Django and Django REST Framework</p>
+            <p>
+                <a href="https://github.com/Jayesh-Kamble/bank-branches-api-django" target="_blank">
+                    📂 View on GitHub
+                </a>
+                <a href="/api/" target="_blank">
+                    🚀 API Documentation
+                </a>
+                <a href="/admin/" target="_blank">
+                    ⚙️ Admin Panel
+                </a>
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                <strong>Jayesh Kamble</strong> - Full Stack Developer | Django Specialist
+            </p>
+        </div>
+    </div>
+</body>
+</html>

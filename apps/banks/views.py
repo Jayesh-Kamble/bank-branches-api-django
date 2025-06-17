@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Bank, Branch
 from .serializers import BankSerializer, BranchSerializer, BranchListSerializer
+from django.shortcuts import render
+
 
 class BankListView(generics.ListAPIView):
     queryset = Bank.objects.all()
@@ -40,3 +42,17 @@ def bank_branches(request, bank_id):
         })
     except Bank.DoesNotExist:
         return Response({'error': 'Bank not found'}, status=404)
+
+def landing_page(request):
+    """
+    Landing page view that displays project overview and capabilities
+    """
+    context = {
+        'project_name': 'Bank Branches REST API',
+        'description': 'Comprehensive Django REST API for managing bank and branch information',
+        'total_banks': 8,
+        'total_branches': 12,
+        'api_endpoints': 5,
+        'test_cases': 17
+    }
+    return render(request, 'landing.html', context)
